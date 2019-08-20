@@ -32,7 +32,7 @@ public class ThriftClientTest {
 		
 		ConnectionValidator validator = new ConnectionValidator() {
 			@Override
-			public boolean isValid(TTransport object) {
+			public boolean isValid(TTransport object,ThriftServer thriftServer) {
 				return object.isOpen();
 			}
 		};

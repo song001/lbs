@@ -1,5 +1,6 @@
 package com.cyfonly.thriftj.pool;
 
+import org.apache.commons.lang.ObjectUtils;
 import org.apache.commons.pool2.KeyedPooledObjectFactory;
 import org.apache.commons.pool2.PooledObject;
 import org.apache.commons.pool2.impl.DefaultPooledObject;
@@ -54,7 +55,7 @@ public class ThriftConnectionFactory implements KeyedPooledObjectFactory<ThriftS
 				isValidate = pooledObject.getObject().isOpen();
 			} else {
 				ConnectionValidator validator = failoverChecker.getConnectionValidator();
-				isValidate = pooledObject.getObject().isOpen() && (validator == null || validator.isValid(pooledObject.getObject()));
+				isValidate = pooledObject.getObject().isOpen() && (validator == null || validator.isValid(pooledObject.getObject(),null));
 			}
 		} catch (Throwable e) {
 			logger.warn("Fail to validate tsocket: {}:{}", new Object[]{thriftServer.getHost(), thriftServer.getPort(), e});

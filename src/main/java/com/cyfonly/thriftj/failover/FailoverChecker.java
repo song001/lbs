@@ -60,7 +60,7 @@ public class FailoverChecker {
 				boolean valid = false;
 				try {
 					tt = poolProvider.getConnection(thriftServer);
-					valid = connectionValidator.isValid(tt);
+					valid = connectionValidator.isValid(tt,thriftServer);
 				} catch (Exception e) {
 					valid = false;
 					logger.warn(e.getMessage(), e);

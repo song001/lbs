@@ -1,6 +1,8 @@
 package com.cyfonly.thriftj.failover;
 
+import com.cyfonly.thriftj.ThriftClient;
 import org.apache.thrift.transport.TTransport;
+import com.cyfonly.thriftj.pool.ThriftServer;
 
 /**
  * 连接验证
@@ -9,6 +11,5 @@ import org.apache.thrift.transport.TTransport;
  */
 public interface ConnectionValidator {
 
-	boolean isValid(TTransport object);
-	
+	boolean isValid(TTransport object,ThriftServer thriftServer);
 }
